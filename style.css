@@ -75,3 +75,34 @@ nput {
     display: flex;
     flex-direction: row;
 }
+
+.five-day-container {
+    background-color: lightblue;
+    color: black;
+    margin: 0 auto;
+    margin-right: 5px;
+    padding: 10px;
+}
+
+.five-day-card {
+    margin-left: 58.5px;
+    width: 175px;
+    height: auto;
+    border-radius: 5px;
+    color: white;
+    font-size: larger;
+    background-color: #3498db;
+}
+
+.five-day-container .card-text {
+    margin-bottom: 15px;
+    padding: 10px 30px 5px 10px;
+}
+
+.five-day-card h3 {
+    margin: 5px;
+}
+
+.five-day-card img {
+    margin-left: 10%;
+}
