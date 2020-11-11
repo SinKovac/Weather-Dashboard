@@ -146,3 +146,13 @@ li:last-child {
     padding: 12px 5px 12px 15px;
     list-style: none;
 }
+
+.row {
+    display: flex;
+    line-height: 50%;
+    margin: 5px 5px 5px 0px;
+}
+
+.row * {
+    margin-right: 5px;
+}
