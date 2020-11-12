@@ -63,7 +63,7 @@ function renderWeatherData(cityName, cityTemp, cityHumidity, cityWindSpeed, city
     weatherIconEl.attr("src", cityWeatherIcon);
 
     function getWeather(desiredCity) {
-    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${desiredCity}&APPID=${APIkey}&units=imperial`;
+    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${desiredCity}&APPID=${APIKey}&units=imperial`;
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -77,7 +77,7 @@ function renderWeatherData(cityName, cityTemp, cityHumidity, cityWindSpeed, city
             cityUVIndex: weatherData.coord,
             cityWeatherIconName: weatherData.weather[0].icon
  
-let queryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${cityObj.cityUVIndex.lat}&lon=${cityObj.cityUVIndex.lon}&APPID=${APIkey}&units=imperial`
+let queryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${cityObj.cityUVIndex.lat}&lon=${cityObj.cityUVIndex.lon}&APPID=${APIKey}&units=imperial`
 $.ajax({
      url: queryUrl,
      method: 'GET'
@@ -117,7 +117,7 @@ $.ajax({
 
  function getFiveDayForecast() {
       cardRow.empty();
-      let queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${desiredCity}&APPID=${APIkey}&units=imperial`;
+      let queryUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${desiredCity}&APPID=${APIKey}&units=imperial`;
       $.ajax({
           url: queryUrl,
           method: "GET"
