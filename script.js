@@ -81,3 +81,34 @@ let queryUrl = `https://api.openweathermap.org/data/2.5/uvi?lat=${cityObj.cityUV
 $.ajax({
      url: queryUrl,
      method: 'GET'
+
+ .then(function(uvData) {
+        if (JSON.parse(localStorage.getItem("searchHistory")) == null) {
+            let searchHistoryArr = [];
+            if (searchHistoryArr.indexOf(cityObj.cityName) === -1) {
+                searchHistoryArr.push(cityObj.cityName); 
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr));
+                let renderedWeatherIcon = `https:///openweathermap.org/img/w/${cityObj.cityWeatherIconName}.png`;
+                renderWeatherData(cityObj.cityName, cityObj.cityTemp, cityObj.cityHumidity, cityObj.cityWindSpeed, renderedWeatherIcon, uvData.value);
+                renderSearchHistory(cityObj.cityName);
+            }else{
+                console.log("City already in searchHistory. Not adding to history list")
+                let renderedWeatherIcon = `https:///openweathermap.org/img/w/${cityObj.cityWeatherIconName}.png`;
+                renderWeatherData(cityObj.cityName, cityObj.cityTemp, cityObj.cityHumidity, cityObj.cityWindSpeed, renderedWeatherIcon, uvData.value);
+            }
+        }else{
+            let searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
+            if (searchHistoryArr.indexOf(cityObj.cityName) === -1) {
+                searchHistoryArr.push(cityObj.cityName);
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr));
+                let renderedWeatherIcon = `https:///openweathermap.org/img/w/${cityObj.cityWeatherIconName}.png`;
+                renderWeatherData(cityObj.cityName, cityObj.cityTemp, cityObj.cityHumidity, cityObj.cityWindSpeed, renderedWeatherIcon, uvData.value);
+                renderSearchHistory(cityObj.cityName);
+            }else{
+                console.log("City already in searchHistory. Not adding to history list")
+                let renderedWeatherIcon = `https:///openweathermap.org/img/w/${cityObj.cityWeatherIconName}.png`;
+                renderWeatherData(cityObj.cityName, cityObj.cityTemp, cityObj.cityHumidity, cityObj.cityWindSpeed, renderedWeatherIcon, uvData.value);
+            }
+        }
+    })
+        
