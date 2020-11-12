@@ -20,4 +20,21 @@ searchEl.addEventListener("click",function() {
     renderSearchHistory();
 })
 
-
+function getCityWeather(userInput){
+    displayInfo.innerHTML = '';
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputEl}&units=metric&appid=${APIKey}`)
+    .then(response => response.json())
+    .then(({ main: { temp, humidity }, wind: { speed }, coord: { lon, lat } }) => {
+      var info = document.createElement('div');
+  
+      info.innerHTML = `<h2>${userInput} ${moment().format('MM/DD/YYYY')}</h2>
+      <p>Temperature: ${temp} ºC </p>
+      <p>Humidity: ${humidity}</p>
+      <p>Wind Speed: ${speed} mph </p>
+      `
+        displayInfo.append(info)
+        getUvIndex(lon, lat)
+        getFiveDayForecast(lon, lat)
+        
+    })
+}
